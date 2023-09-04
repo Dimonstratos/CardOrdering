@@ -4,7 +4,7 @@ stack: jdk 11  # версия JDK
 
 branches:
   only:
-    - test # ветка git
+    - main # ветка git
 
 build: off  # будем использовать свой скрипт сборки
 
@@ -14,4 +14,5 @@ install:
 
 build_script:
   - chmod +x gradlew
+  - chmod +x driver/linux/chromedriver
   - ./gradlew test --info -Dselenide.headless=true
