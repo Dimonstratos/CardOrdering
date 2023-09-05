@@ -89,7 +89,7 @@ class CardOrderingTest {
         driver.findElement(By.className("button")).click();
 
         String expected = "Поле обязательно для заполнения";
-        String actual = driver.findElement(By.cssSelector("[data-test-id=phone].input_invalid .input__sub")).getText().trim();
+        String actual = driver.findElement(By.cssSelector("[data-test-id=`phone`].input_invalid .input__sub")).getText().trim();
 
         assertEquals(expected, actual);
     }
