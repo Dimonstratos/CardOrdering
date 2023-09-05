@@ -84,12 +84,12 @@ class CardOrderingTest {
 
     @Test
     void shouldCardFormWithoutPhone() { // В заявке отсутствует номер телефона
-        driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Смит Джон");
+        driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Иван Петров");
         driver.findElement(By.cssSelector("[data-test-id=agreement]")).click();
         driver.findElement(By.className("button")).click();
 
         String expected = "Поле обязательно для заполнения";
-        String actual = driver.findElement(By.cssSelector("[data-test-id=phone].input_invalid .input__sub")).getText().trim();
+        String actual = driver.findElement(By.cssSelector("[data-test-id=`phone`].input_invalid .input__sub")).getText().trim();
 
         assertEquals(expected, actual);
     }
