@@ -10,6 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+import static com.codeborne.selenide.Selenide.open;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class CardOrderingTest {
@@ -36,7 +37,7 @@ class CardOrderingTest {
 
     @Test
     void testPositiveAllInput() {
-        driver.get("http://localhost:9999");
+        open ("http://localhost:9999");
         driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Иван Петров-Иванов");
         driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+79512852525");
         driver.findElement(By.className("checkbox__box")).click();
