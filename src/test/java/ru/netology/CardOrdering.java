@@ -27,7 +27,9 @@ class CardOrderingTest {
     @BeforeEach
     void setUp() {
         driver = new ChromeDriver(options);
+        open ("http://localhost:9999");
     }
+
 
     @AfterEach
     void tearDown() {
@@ -37,12 +39,11 @@ class CardOrderingTest {
 
     @Test
     void testPositiveAllInput() {
-        open ("http://localhost:9999");
-        driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Иван Петров-Иванов");
-        driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+79512852525");
+        driver.findElement(By.cssSelector("[data-test-id=`name`] input")).sendKeys("Иван Петров-Иванов");
+        driver.findElement(By.cssSelector("[data-test-id=`phone`] input")).sendKeys("+79512852525");
         driver.findElement(By.className("checkbox__box")).click();
         driver.findElement(By.className("button")).click();
-        String text = driver.findElement(By.cssSelector("[data-test-id=order-success]")).getText();
+        String text = driver.findElement(By.cssSelector("[data-test-id=`order-success`]")).getText();
         assertEquals("Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.", text.trim());
     }
 
