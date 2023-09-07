@@ -10,10 +10,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
-import static com.codeborne.selenide.Selenide.open;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class CardOrderingTest {
+class CardOrdering {
     private WebDriver driver;
     private static ChromeOptions options;
 
@@ -27,7 +26,7 @@ class CardOrderingTest {
     @BeforeEach
     void setUp() {
         driver = new ChromeDriver(options);
-        open ("http://localhost:9999");
+        driver.get("http://localhost:9999");
     }
 
 
@@ -38,7 +37,7 @@ class CardOrderingTest {
     }
 
     @Test
-    public void testPositiveAllInput() {
+    void testPositiveAllInput() {
         driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Иван Петров-Иванов");
         driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+79512852525");
         driver.findElement(By.className("checkbox__box")).click();
@@ -48,7 +47,7 @@ class CardOrderingTest {
     }
 
     @Test
-    public void shouldCardFormInvalidName() {
+    void shouldCardFormInvalidName() {
         driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Ivan Petrov"); // Имя набрано латиницей
         driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+79512852525");
         driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
